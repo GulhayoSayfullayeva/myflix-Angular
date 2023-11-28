@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import {MatDialogRef}  from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(public fetchApi: FetchApiDataService,
               public matdialog: MatDialogRef<LoginComponent>,
-              public snackbar: MatSnackBar) { }
+              public snackbar: MatSnackBar,
+              public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
 
         this.matdialog.close();
         this.snackbar.open('Login successfull!!!', 'OK', { duration: 2000});
-
+        this.router.navigate(['movies']);
         
      }, (response) => {
         this.snackbar.open(response, 'OK', { duration: 2000});
