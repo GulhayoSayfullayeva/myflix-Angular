@@ -13,13 +13,27 @@ export class LoginComponent implements OnInit {
 
   @Input() loginData = { username: '', password: ''}
 
-  constructor() { }
+  constructor(public fetchApi: FetchApiDataService,
+              public matdialog: MatDialogRef<LoginComponent>,
+              public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
-  public loginUser(){
-    
+  public loginUser() : void{
+     this.fetchApi.userLogin(this.loginData).subscribe((result) => {
+        // Successfully login done
+        localStorage.setItem('user', JSON.stringify(result.user));
+        localStorage.setItem('token', result.token);
+
+        this.matdialog.close();
+        this.snackbar.open('Login successfull!!!', 'OK', { duration: 2000});
+
+        
+     }, (response) => {
+        this.snackbar.open(response, 'OK', { duration: 2000});
+     });
+
   }
 
 }
