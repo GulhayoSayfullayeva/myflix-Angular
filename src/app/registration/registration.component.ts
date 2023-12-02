@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 import { FetchApiDataService } from '../fetch-api-data.service';
 import {MatDialogRef}  from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -12,12 +13,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegistrationComponent implements OnInit {
 
-  @Input() userData = { username: '', password: '', email: '', birthdate: ''};
+  @Input() userData = { username: '', password: '', email: '', birthday: ''};
 
 
   constructor(public fetchApiData: FetchApiDataService,
               public dialogRef: MatDialogRef<RegistrationComponent>,
-              public snackBarRef: MatSnackBar
+              public snackBarRef: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: { title: string, button: string, function: string}
     ) {
     
    }

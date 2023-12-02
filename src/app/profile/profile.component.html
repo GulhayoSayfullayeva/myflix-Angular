@@ -1,0 +1,23 @@
+<mat-card class="profile">
+    <mat-card-title>Profile</mat-card-title>
+    <mat-card-content>
+       Username: {{user.username}} <br/>
+       Email: {{user.email}} <br/>
+       Birthdate: {{user.birthday}} <br/>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="back()" color="primary" style="margin: 20px;">
+            Back
+
+        </button>
+        <button mat-raised-button (click)="updateUser()" color="primary" style="margin: 20px;">
+            Update User
+
+        </button>
+        <button mat-raised-button (click)="deregisterUser()" color="primary" style="margin: 20px;">
+            Deregister User
+
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { Router }  from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
@@ -10,7 +11,8 @@ export class MovieCardComponent implements OnInit {
 
   movies : any[] = [];
 
-  constructor(public fetchApi: FetchApiDataService) { }
+  constructor(public fetchApi: FetchApiDataService,
+              public router: Router) { }
 
   ngOnInit(): void {
     this.getAllMovies();
@@ -22,6 +24,15 @@ export class MovieCardComponent implements OnInit {
       console.log(response);
       return this.movies;
     });
+  }
+
+  public openProfile(): void {
+       this.router.navigate(['profile']);
+  }
+  public logoutUser() : void{
+    localStorage.setItem('token', '');
+    localStorage.setItem('user', '');
+    this.router.navigate(['welcome']);
   }
 
 }

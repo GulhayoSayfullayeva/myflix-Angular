@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RegistrationComponent } from '../registration/registration.component';
 import { LoginComponent } from '../login/login.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-welcome',
@@ -16,7 +17,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   public openRegistrationDialog() : void {
-    this.dialog.open(RegistrationComponent, { width: '400px'});
+    this.dialog.open(RegistrationComponent, { width: '400px', data: {title: 'REGISTER', button: 'Signup', function: 'registerUser()'}});
    }
    public openLoginDialog() : void {
     this.dialog.open(LoginComponent, { width: '400px'});

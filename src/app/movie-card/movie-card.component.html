@@ -1,6 +1,42 @@
-<mat-card *ngFor="let movie of movies; let i=index;">
-    <mat-dialog-content>
+<div class="navigation-bar">
+    <h1>Movies List</h1>
+    <button class="menus" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openProfile()"> Profile</button>
+      <button mat-menu-item (click)="logoutUser()">Logout</button>
+    </mat-menu>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="movie-list">
+    <mat-card class="movie-card" *ngFor="let movie of movies;">
+        <mat-card-header class="movie-title">
         <mat-card-title>{{movie.title}}</mat-card-title>
-        <mat-card-subtitle><img src={{movie.imageUrl}}/></mat-card-subtitle>
-    </mat-dialog-content>
-</mat-card>
+            <mat-card-subtitle>Directed by: {{movie.Director.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="movie-image" src={{movie.imageUrl}} alt= {{movie.title}} />
+        <mat-card-actions class="movie-info">
+            <button
+                mat-button
+            >
+                Genre
+            </button>
+            <button
+                mat-button
+                
+            >
+                Director
+            </button>
+            <button
+                mat-button
+    
+            >
+                Synopsis
+            </button>
+            <mat-icon>favorite_border</mat-icon>
+        </mat-card-actions>
+    </mat-card>
+</div>
