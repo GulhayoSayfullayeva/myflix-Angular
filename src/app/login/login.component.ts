@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
         // Successfully login done
         localStorage.setItem('user', JSON.stringify(result.user));
         localStorage.setItem('token', result.token);
-
         this.matdialog.close();
         this.snackbar.open('Login successfull!!!', 'OK', { duration: 2000});
         this.router.navigate(['movies']);

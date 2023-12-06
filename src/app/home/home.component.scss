@@ -1,16 +1,15 @@
-.navigation-bar{
-    background-color: rgb(95, 137, 230);;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    
-    padding: 15px;
-}
-h1{
-    color: white;
-    margin-left: calc(100%/4);
+.movie-title{
+    flex: 1;
 }
 
+.movie-image{
+    flex: 4;
+    object-fit: contain;
+    max-width: 100%;
+}
+.movie-info{
+    flex: 1;
+}
 .movie-list{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -29,17 +28,3 @@ h1{
     align-items: center;
     border: 1px solid rgb(230, 223, 223);
 }
-
-.movie-title{
-    flex: 1;
-}
-
-.movie-image{
-    flex: 4;
-    object-fit: contain;
-    max-width: 100%;
-}
-.movie-info{
-    flex: 1;
-}
-

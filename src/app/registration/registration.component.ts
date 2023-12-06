@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, ChangeDetectorRef } from '@angular/core';
 
 import { FetchApiDataService } from '../fetch-api-data.service';
 import {MatDialogRef}  from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProfileComponent } from '../profile/profile.component';
 
 
 @Component({
@@ -13,18 +14,25 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class RegistrationComponent implements OnInit {
 
-  @Input() userData = { username: '', password: '', email: '', birthday: ''};
+  @Input() userData : any= { username: '', password: '', email: '', birthday: ''};
 
+  token : any = localStorage.getItem('token');
 
   constructor(public fetchApiData: FetchApiDataService,
               public dialogRef: MatDialogRef<RegistrationComponent>,
               public snackBarRef: MatSnackBar,
-              @Inject(MAT_DIALOG_DATA) public data: { title: string, button: string, function: string}
+              @Inject(MAT_DIALOG_DATA) public data: { title: string, button: string, function: string},
+              
     ) {
     
    }
 
   ngOnInit(): void {
+    if( this.token !== null ){
+      this.userData = JSON.parse(localStorage.getItem('user') || '');
+      this.userData.password = '';
+      console.log(this.userData);
+    }
   }
 
   registerUser(): void{
@@ -37,6 +45,17 @@ export class RegistrationComponent implements OnInit {
       this.snackBarRef.open(response, 'OK', {  duration: 2000});
     });
 
+  }
+  updateUser(): void {
+     this.fetchApiData.updateUser(this.userData).subscribe((response) => {
+      localStorage.setItem('user', JSON.stringify(response));
+      this.dialogRef.close();
+      this.snackBarRef.open('User updated successfully!!', 'OK', {duration: 2000});
+      
+     }, (response) => {
+      console.log(response);
+      this.snackBarRef.open(response, 'OK', {  duration: 2000});
+     });
   }
 
 }

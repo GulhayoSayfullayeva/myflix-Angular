@@ -14,15 +14,18 @@
                 <input matInput placeholder="email" type="email" [(ngModel)]="userData.email" name="email" required>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="birthdate" type="date" [(ngModel)]="userData.birthday" name="birthdate" required>
+                <input matInput placeholder="birthday" type="date" [(ngModel)]="userData.birthday" name="birthday" required>
             </mat-form-field>
         </form>
 
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="{{data.function}}" color="primary" style="margin-bottom: 20px;">
+        <button *ngIf=" token!== null " mat-raised-button (click)="updateUser()" color="primary" style="margin-bottom: 20px;">
             {{data.button}}
-
         </button>
+        <button *ngIf=" token === null " mat-raised-button (click)="registerUser()" color="primary" style="margin-bottom: 20px;">
+          {{data.button}}
+        </button>
+
     </mat-card-actions>
 </mat-card>

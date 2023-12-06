@@ -17,6 +17,8 @@ export class WelcomeComponent implements OnInit {
   }
 
   public openRegistrationDialog() : void {
+    localStorage.clear();
+    console.log(localStorage.getItem('token'));
     this.dialog.open(RegistrationComponent, { width: '400px', data: {title: 'REGISTER', button: 'Signup', function: 'registerUser()'}});
    }
    public openLoginDialog() : void {
