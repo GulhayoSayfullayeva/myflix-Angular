@@ -1,27 +1,36 @@
 # MyflixAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+The client-side angular application called myFlix-Angular based on
+its existing server-side code (REST API and database)
 
-## Development server
+## Description
+Application using Angular, displaying list of the movies stored in database to the successfully registered users.
+## Project running
+ - Navigate to the project folder in the terminal
+ * Run the following:  ```ng -serve```
+ + In the browser open: `http://localhost:4200/`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+ ## Live app URL:
+https://gulhayosayfullayeva.github.io/myflix-Angular/welcome
 
-## Code scaffolding
+## First time to use:
+Click register, after successfully registered login with credentials
+
+## Code explanations
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+# Main Views of the application
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Welcome View
+* Signup View
++ Login View
+- Home View
+* Profile VIew
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Technologies
+- Angular
+* Node.js and npm
++ Angular Material for design
+- Codebase comments (Typedoc)
+* Hosted on GitHub Pages
