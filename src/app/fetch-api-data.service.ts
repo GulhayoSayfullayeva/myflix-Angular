@@ -151,7 +151,7 @@ public deleteFromFavourite(movieId: string) : Observable<any> {
 public addToFavourite(movieId: string) : Observable<any> {
   const user = JSON.parse(localStorage.getItem('user') || '');
   const token = localStorage.getItem('token');
-  return this.http.post(apiUrl + '/users/' + user.username + '/' + movieId, { headers: new HttpHeaders(
+  return this.http.post(apiUrl + '/users/' + user.username + '/' + movieId, {},{ headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     }
