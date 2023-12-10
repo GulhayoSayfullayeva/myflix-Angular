@@ -21,6 +21,9 @@ export class ProfileComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { }
 
+   /**
+   * first this component loaded, it will load the current user data, update localstorage
+   */
   ngOnInit(): void {
     this.loadUser();
   }
@@ -31,15 +34,23 @@ export class ProfileComponent implements OnInit {
       this.favouriteMovies = response.filter((movie: any) => this.user.favourite_movies.includes(movie._id));
     });
   }
-
+/**
+ * this will redirect to the home page
+ */
   public back(): void {
     this.router.navigate(['movies']);
   }
+   /**
+   * this opens the update dialog to update the current user data
+   */
   public updateUser(): void {
     // Used registartionComponent with another shared variables
     this.dialog.open(RegistrationComponent, { width: '400px', height: '400px', data: { title: 'UPDATE USER', button: 'Update', function: 'updateUser()' } });
     this.fetchApi.currentUser.subscribe(userData => this.user = userData);
   }
+   /**
+   * delete the current user account and navigate to the welcome page
+   */
   public deregisterUser(): void {
     this.fetchApi.deleteUser().subscribe((response) => {
         console.log('Deleted');

@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
     ) {
     
    }
-
+ 
   ngOnInit(): void {
     if( this.token !== null ){
       this.userData = JSON.parse(localStorage.getItem('user') || '');
@@ -34,7 +34,9 @@ export class RegistrationComponent implements OnInit {
       console.log(this.userData);
     }
   }
-
+ /**
+   * this sends userData object to db in order to register, when register button clicked
+   */
   registerUser(): void{
     this.fetchApiData.userRregistration(this.userData).subscribe((response) => {
       this.dialogRef.close();
@@ -46,6 +48,10 @@ export class RegistrationComponent implements OnInit {
     });
 
   }
+
+   /**
+   * this sends updated user object to db, when update user button clicked
+   */
   updateUser(): void {
      this.fetchApiData.updateUser(this.userData).subscribe((response) => {
       localStorage.setItem('user', JSON.stringify(response));

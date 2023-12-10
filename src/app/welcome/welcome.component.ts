@@ -16,11 +16,18 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   /**
+   * this opens the dialog registration when the signup button is clicked
+   */
   public openRegistrationDialog() : void {
     localStorage.clear();
     console.log(localStorage.getItem('token'));
     this.dialog.open(RegistrationComponent, { width: '400px', data: {title: 'REGISTER', button: 'Signup', function: 'registerUser()'}});
    }
+
+    /**
+   * this opens the dialog login when the login button is clicked
+   */
    public openLoginDialog() : void {
     this.dialog.open(LoginComponent, { width: '400px'});
    }

@@ -22,6 +22,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   *Login user with credentials,  after succeccfully login, navigate to home page
+   *@param loginData
+   *@returns current user data
+  */
   public loginUser() : void{
      this.fetchApi.userLogin(this.loginData).subscribe((result) => {
         // Successfully login done
